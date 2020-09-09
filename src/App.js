@@ -5,7 +5,19 @@ import Todo from "./Todo";
 import db from "./firebase";
 import firebase from "firebase";
 
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  paper_input: {
+    color: "#eae6e5",
+  },
+  button: {
+    backgroundColor: "#eae6e5",
+  },
+}));
+
 function App() {
+  const classes = useStyles();
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
 
@@ -34,9 +46,13 @@ function App() {
 
   return (
     <div className="app">
+      <h1 className="app__title">Todo App</h1>
       <FormControl className="app__form">
-        <InputLabel className="app__form__input">Write a Todo</InputLabel>
+        <InputLabel className={`'app__form__input' ${classes.paper_input} `}>
+          Write a Todo
+        </InputLabel>
         <Input
+          className={classes.paper_input}
           value={input}
           onChange={(event) => setInput(event.target.value)}
         />

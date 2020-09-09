@@ -2,6 +2,10 @@
   display: flex;
 }
 
+.todo__list__item {
+  margin-left: -10px;
+}
+
 .todo__buttons {
   display: flex;
   margin-top: 10px;

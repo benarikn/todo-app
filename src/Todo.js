@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import "./Todo.css";
-import {
-  List,
-  ListItem,
-  ListItemText,
-  Modal,
-  Button,
-  Input,
-} from "@material-ui/core";
+import { List, ListItem, ListItemText, Modal, Input } from "@material-ui/core";
 import CancelIcon from "@material-ui/icons/Cancel";
 import EditIcon from "@material-ui/icons/Edit";
 import UpdateIcon from "@material-ui/icons/Update";
@@ -17,11 +10,15 @@ import db from "./firebase";
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
+    width: theme.spacing.unit * 50,
+    backgroundColor: "#476A6F",
+    border: "2px solid #476A6F",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+    padding: theme.spacing.unit * 1,
+    color: "#eae6e5",
+  },
+  buttons: {
+    color: "#eae6e5",
   },
 }));
 
@@ -44,9 +41,27 @@ function Todo(props) {
   };
   return (
     <>
-      <Modal open={open} onClose={(e) => setOpen(false)}>
-        <div className={classes.paper}>
+      <Modal
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+        open={open}
+        onClose={(e) => setOpen(false)}
+      >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          className={classes.paper}
+        >
           <Input
+            style={{
+              color: "#eae6e5",
+            }}
             placeholder={props.todo.todo}
             value={input}
             onChange={(event) => setInput(event.target.value)}
@@ -60,9 +75,13 @@ function Todo(props) {
           <ListItemText primary={props.todo.todo} />
         </ListItem>
         <div className="todo__buttons">
-          <EditIcon onClick={(e) => setOpen(true)} />
+          <EditIcon
+            className={classes.buttons}
+            onClick={(e) => setOpen(true)}
+          />
 
           <CancelIcon
+            className={classes.buttons}
             onClick={(event) =>
               db.collection("todos").doc(props.todo.id).delete()
             }
