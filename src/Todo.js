@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttons: {
     color: "#eae6e5",
+    paddingLeft: "20px",
   },
 }));
 
@@ -66,7 +67,7 @@ function Todo(props) {
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
-          <UpdateIcon onClick={updateTodo} />
+          <UpdateIcon className="todo__buttons__update" onClick={updateTodo} />
         </div>
       </Modal>
 
@@ -76,12 +77,12 @@ function Todo(props) {
         </ListItem>
         <div className="todo__buttons">
           <EditIcon
-            className={classes.buttons}
+            className="todo__buttons__edit"
             onClick={(e) => setOpen(true)}
           />
 
           <CancelIcon
-            className={classes.buttons}
+            className="todo__buttons__delete"
             onClick={(event) =>
               db.collection("todos").doc(props.todo.id).delete()
             }

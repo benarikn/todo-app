@@ -39,3 +39,11 @@
   margin-left: -7%;
   color: #eae6e5;
 }
+
+.MuiInput-underline:after {
+  border-bottom: 2px solid #d4cdf4 !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #d4cdf4 !important;
+}

@@ -3,10 +3,47 @@
 }
 
 .todo__list__item {
-  margin-left: -10px;
+  display: flex;
+  flex-direction: row;
 }
 
 .todo__buttons {
   display: flex;
   margin-top: 10px;
+}
+
+.todo__buttons__edit {
+  color: "#eae6e5";
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.todo__buttons__edit:hover {
+  color: #111 !important;
+  background-color: #476a6f !important;
+  cursor: pointer !important;
+}
+
+.todo__buttons__delete {
+  color: "#eae6e5";
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.todo__buttons__delete:hover {
+  color: #111 !important;
+  background-color: #476a6f !important;
+  cursor: pointer !important;
+}
+
+.todo__buttons__update {
+  color: "#eae6e5";
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.todo__buttons__update:hover {
+  color: #111 !important;
+  background-color: #476a6f !important;
+  cursor: pointer !important;
 }
