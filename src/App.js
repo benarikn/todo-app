@@ -4,6 +4,7 @@ import { Button, FormControl, InputLabel, Input } from "@material-ui/core";
 import Todo from "./Todo";
 import db from "./firebase";
 import firebase from "firebase";
+import blop from "./sounds/blop.wav";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
+  const blopAudio = new Audio(blop);
   const classes = useStyles();
   const [todos, setTodos] = useState([]);
   const [input, setInput] = useState("");
@@ -42,6 +44,11 @@ function App() {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setInput("");
+    playSound(blopAudio);
+  };
+
+  const playSound = (audioFile) => {
+    audioFile.play();
   };
 
   return (

@@ -6,6 +6,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import UpdateIcon from "@material-ui/icons/Update";
 import { makeStyles } from "@material-ui/core/styles";
 import db from "./firebase";
+import blop from "./sounds/blop.wav";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -24,9 +25,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Todo(props) {
+  const blopAudio = new Audio(blop);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
+
+  const playSound = (audioFile) => {
+    audioFile.play();
+  };
 
   const updateTodo = (event) => {
     event.preventDefault();
@@ -39,6 +45,7 @@ function Todo(props) {
     );
     setInput("");
     setOpen(false);
+    playSound(blopAudio);
   };
   return (
     <>
@@ -78,14 +85,18 @@ function Todo(props) {
         <div className="todo__buttons">
           <EditIcon
             className="todo__buttons__edit"
-            onClick={(e) => setOpen(true)}
+            onClick={(e) => {
+              setOpen(true);
+              playSound(blopAudio);
+            }}
           />
 
           <CancelIcon
             className="todo__buttons__delete"
-            onClick={(event) =>
-              db.collection("todos").doc(props.todo.id).delete()
-            }
+            onClick={(event) => {
+              db.collection("todos").doc(props.todo.id).delete();
+              playSound(blopAudio);
+            }}
           />
         </div>
       </List>
